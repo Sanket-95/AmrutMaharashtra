@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amrut Maharashtra</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-orange: #ff6b00;
+            --dark-orange: #e65100;
+            --light-orange: #ffad42;
+            --light-bg: #f8f9fa;
+            --dark-bg: #1a1a1a;
+            --text-light: #f8f9fa;
+            --text-dark: #212529;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+        }
+
+        /* Header Styles */
+        .top-banner {
+            height: 25vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://source.unsplash.com/random/1600x400/?maharashtra') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            position: relative;
+        }
+
+        .top-banner-content {
+            text-align: center;
+            z-index: 1;
+        }
+
+        .top-banner h1 {
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .top-banner p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 0.5rem 1rem;
+        }
+
+        .dark-mode .navbar {
+            background-color: #2a2a2a;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .navbar-brand img {
+            height: 60px;
+        }
+
+        .nav-item {
+            margin: 0 5px;
+        }
+
+        .nav-link {
+            color: #333 !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .dark-mode .nav-link {
+            color: #f8f9fa !important;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-orange) !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--primary-orange);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .social-icons a {
+            color: #555;
+            margin: 0 8px;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .dark-mode .social-icons a {
+            color: #ddd;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-orange);
+            transform: translateY(-3px);
+        }
+
+        .mode-toggle {
+            background: none;
+            border: none;
+            color: #555;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .dark-mode .mode-toggle {
+            color: #ddd;
+        }
+
+        .mode-toggle:hover {
+            color: var(--primary-orange);
+            background-color: rgba(255, 107, 0, 0.1);
+        }
+
+        .search-icon {
+            color: #555;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px 10px;
+            transition: all 0.3s;
+        }
+
+        .dark-mode .search-icon {
+            color: #ddd;
+        }
+
+        .search-icon:hover {
+            color: var(--primary-orange);
+        }
+
+        .get-update-btn {
+            background-color: var(--primary-orange);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 15px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .get-update-btn:hover {
+            background-color: var(--dark-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(255, 107, 0, 0.3);
+        }
+
+        .get-update-btn i {
+            margin-right: 5px;
+        }
+
+        /* Top Stories Section */
+        .top-stories-container {
+            background-color: #f8f9fa;
+            padding: 15px 0;
+            border-top: 1px solid #e9ecef;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .dark-mode .top-stories-container {
+            background-color: #2a2a2a;
+            border-color: #444;
+        }
+
+        .top-stories-bar {
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .top-stories-label {
+            background-color: var(--primary-orange);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 4px;
+            font-weight: 600;
+            white-space: nowrap;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .top-stories-scroll {
+            flex-grow: 1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .top-stories-track {
+            display: flex;
+            animation: scroll-left 30s linear infinite;
+            white-space: nowrap;
+        }
+
+        .top-stories-track.paused {
+            animation-play-state: paused;
+        }
+
+        .story-item {
+            display: flex;
+            align-items: center;
+            margin-right: 40px;
+            flex-shrink: 0;
+            position: relative;
+            cursor: pointer;
+            padding: 5px 0;
+        }
+
+        .story-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-orange);
+            transition: width 0.3s ease;
+        }
+
+        .story-item:hover::after {
+            width: 100%;
+        }
+
+        .story-image {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 10px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .dark-mode .story-image {
+            background-color: #555;
+        }
+
+        .story-text {
+            font-size: 0.95rem;
+            white-space: nowrap;
+            color: #333;
+        }
+
+        .dark-mode .story-text {
+            color: #f8f9fa;
+        }
+
+        .pause-btn {
+            background: none;
+            border: none;
+            color: #6c757d;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px;
+            margin-left: 20px;
+            flex-shrink: 0;
+            transition: color 0.3s;
+        }
+
+        .pause-btn:hover {
+            color: var(--primary-orange);
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* You May Have Missed Section */
+        .missed-section {
+            padding: 3rem 0;
+            background-color: #f8f9fa;
+        }
+
+        .dark-mode .missed-section {
+            background-color: #2a2a2a;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-orange);
+            bottom: 0;
+            left: 0;
+        }
+
+        .missed-cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .missed-card {
+            flex: 1;
+            min-width: 250px;
+            height: 320px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode .missed-card {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .missed-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .dark-mode .missed-card:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+
+        .missed-card-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .missed-card:hover .missed-card-bg {
+            transform: scale(1.1);
+        }
+
+        .missed-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            color: white;
+        }
+
+        .special-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary-orange);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .missed-card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .missed-card-title::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            right: 0;
+            background-color: var(--primary-orange);
+            transition: width 0.3s ease;
+        }
+
+        .missed-card:hover .missed-card-title::after {
+            width: 100%;
+            right: auto;
+            left: 0;
+        }
+
+        .missed-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .publisher-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .publisher-photo {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.3);
+            margin-right: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .publisher-name {
+            font-weight: 500;
+        }
+
+        .publish-date {
+            display: flex;
+            align-items: center;
+        }
+
+        .publish-date i {
+            margin-right: 5px;
+        }
+
+        /* Special Section Styles */
+        .special-section {
+            padding: 3rem 0;
+            background-color: #f8f9fa;
+        }
+
+        .dark-mode .special-section {
+            background-color: #2a2a2a;
+        }
+
+        .special-carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .dark-mode .special-carousel {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            display: flex;
+            background-color: white;
+        }
+
+        .dark-mode .carousel-item {
+            background-color: #333;
+        }
+
+        .carousel-image {
+            width: 40%;
+            background-color: #eee;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .dark-mode .carousel-image {
+            background-color: #444;
+        }
+
+        .carousel-content {
+            width: 60%;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .carousel-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-orange);
+        }
+
+        .carousel-text {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .continue-reading {
+            display: inline-block;
+            color: var(--primary-orange);
+            font-weight: 500;
+            text-decoration: none;
+            position: relative;
+            padding-bottom: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .continue-reading::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            right: 0;
+            background-color: var(--primary-orange);
+            transition: width 0.3s ease;
+        }
+
+        .continue-reading:hover::after {
+            width: 100%;
+            right: auto;
+            left: 0;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .carousel-btn {
+            background-color: var(--primary-orange);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .carousel-btn:hover {
+            background-color: var(--dark-orange);
+            transform: scale(1.1);
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dark-mode .indicator {
+            background-color: #555;
+        }
+
+        .indicator.active {
+            background-color: var(--primary-orange);
+            transform: scale(1.2);
+        }
+
+        /* News Section Styles */
+        .news-section {
+            padding: 3rem 0;
+        }
+
+        .news-card {
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            background-color: white;
+            height: 100%;
+        }
+
+        .dark-mode .news-card {
+            background-color: #2a2a2a;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .dark-mode .news-card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        .news-card-img {
+            height: 200px;
+            background-color: #eee;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .dark-mode .news-card-img {
+            background-color: #444;
+        }
+
+        .news-card-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            height: calc(100% - 200px);
+        }
+
+        .news-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-orange);
+        }
+
+        .news-content {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .news-date {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .dark-mode .news-date {
+            color: #adb5bd;
+        }
+
+        .read-more {
+            color: var(--primary-orange);
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .read-more:hover {
+            color: var(--dark-orange);
+            text-decoration: underline;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .dark-mode footer {
+            background-color: #111;
+        }
+
+        .footer-logo {
+            width: 150px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .footer-link {
+            color: #ddd;
+            text-decoration: none;
+            margin: 0 15px;
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s;
+        }
+
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--primary-orange);
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-orange);
+        }
+
+        .footer-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .footer-divider {
+            border-top: 1px solid #555;
+            margin: 2rem 0;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .copyright {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+        }
+
+        .footer-bottom-link {
+            color: #ddd;
+            text-decoration: none;
+            margin-left: 20px;
+            position: relative;
+            padding-bottom: 2px;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            right: 0;
+            background-color: var(--primary-orange);
+            transition: width 0.3s ease;
+        }
+
+        .footer-bottom-link:hover {
+            color: var(--primary-orange);
+        }
+
+        .footer-bottom-link:hover::after {
+            width: 100%;
+            right: auto;
+            left: 0;
+        }
+
+        @media (max-width: 768px) {
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-bottom-links {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            .footer-bottom-link {
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="top-banner-content">
+            <h1>Amrut Maharashtra</h1>
+            <p>Government of Maharashtra Initiative</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <div class="logo-placeholder" style="width: 150px; height: 60px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #333; font-weight: bold;">
+                    AM Logo
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">मुख्यपृष्ठ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">अमृत कार्यदीप</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">प्रेरणा</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">आत्मदीप</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">शब्दामृत</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">संपर्क</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="social-icons me-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <button class="mode-toggle me-3" id="modeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <div class="search-icon me-3">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <button class="get-update-btn">
+                        <i class="fas fa-bell"></i> Get Updates
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Top Stories Section -->
+    <div class="top-stories-container">
+        <div class="top-stories-bar">
+            <div class="top-stories-label">Top Stories</div>
+            <div class="top-stories-scroll">
+                <div class="top-stories-track" id="topStoriesTrack">
+                    <div class="story-item">
+                        <div class="story-image">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="story-text">लक्ष्मीबाई केळकर – स्त्री शक्तीची अनोखी कहाणी</div>
+                    </div>
+                    <div class="story-item">
+                        <div class="story-image">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="story-text">हिंदू धर्मासाठी बलिदान देणारे श्री गुरू तेगबहादूर</div>
+                    </div>
+                    <div class="story-item">
+                        <div class="story-image">
+                            <i class="fas fa-diya-lamp"></i>
+                        </div>
+                        <div class="story-text">देवदिवाळीनिमित्त विडे ठेवण्याची कोकणातील परंपरा : एक चिंतन!</div>
+                    </div>
+                    <div class="story-item">
+                        <div class="story-image">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="story-text">जणू चमकावी वीज नभी, असा तिचा आवेश….!</div>
+                    </div>
+                    <div class="story-item">
+                        <div class="story-image">
+                            <i class="fas fa-festival"></i>
+                        </div>
+                        <div class="story-text">महाराष्ट्रात अमृततर्फे दीपावलीमध्ये होणार विश्वविक्रमी दुर्गोत्सव 2025 – व्यवस्थापकीय संचालक अमृत मा. विजय जोशी</div>
+                    </div>
+                    <div class="story-item">
+                        <div class="story-image">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="story-text">रत्नागिरी अमृत कार्यालयाचे थाटात उदघाटन!! 🎉✨ | AMRUT</div>
+                    </div>
+                </div>
+            </div>
+            <button class="pause-btn" id="pauseBtn">
+                <i class="fas fa-pause"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Special Section -->
+    <section class="special-section">
+        <div class="container">
+            <h2 class="section-title">विशेष</h2>
+            
+            <div class="special-carousel">
+                <div class="carousel-container" id="carouselContainer">
+                    <!-- Carousel Item 1 -->
+                    <div class="carousel-item">
+                        <div class="carousel-image" style="background-image: url('https://source.unsplash.com/random/600x400/?woman,leader')"></div>
+                        <div class="carousel-content">
+                            <div>
+                                <h3 class="carousel-title">लक्ष्मीबाई केळकर – स्त्री शक्तीची अनोखी कहाणी</h3>
+                                <p class="carousel-text">राष्ट्रसेविका समिती या राष्ट्रीय स्वयंसेवक संघाच्या महिला आघाडीच्या संस्थापिका लक्ष्मीबाई अर्थात मावशी केळकर यांचा २७ नोव्हेंबर हा स्मृतिदिन. त्यांच्या कार्याला वंदन. त्या निमित्ताने, त्यांच्या उत्तुंग आणि अनोख्या कार्याची थोडक्यात ओळख करून देणारा हा लेख…</p>
+                                <a href="#" class="continue-reading">Continue reading...</a>
+                            </div>
+                            <div>
+                                <div class="publisher-info">
+                                    <div class="publisher-photo">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="publisher-name">Amrut Maharashtra</div>
+                                </div>
+                                <div class="publish-date">
+                                    <i class="fas fa-calendar"></i> November 26, 2025
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Carousel Item 2 -->
+                    <div class="carousel-item">
+                        <div class="carousel-image" style="background-image: url('https://source.unsplash.com/random/600x400/?business,leader')"></div>
+                        <div class="carousel-content">
+                            <div>
+                                <h3 class="carousel-title">जेआरडी टाटा - भारतीय उद्योगाचे अग्रदूत</h3>
+                                <p class="carousel-text">जेआरडी टाटा यांचा जन्म २९ जुलै १९०४ रोजी पॅरिस येथे झाला. ते भारतातील सर्वात मोठ्या औद्योगिक गट टाटा ग्रुपचे अध्यक्ष होते. त्यांनी भारतातील विमानवाहतूक उद्योगाची सुरुवात केली आणि टाटा एअरलाइन्सची स्थापना केली जी नंतर एअर इंडिया झाली...</p>
+                                <a href="#" class="continue-reading">Continue reading...</a>
+                            </div>
+                            <div>
+                                <div class="publisher-info">
+                                    <div class="publisher-photo">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="publisher-name">Kaumudi Paranjpe</div>
+                                </div>
+                                <div class="publish-date">
+                                    <i class="fas fa-calendar"></i> November 28, 2025
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Carousel Item 3 -->
+                    <div class="carousel-item">
+                        <div class="carousel-image" style="background-image: url('https://source.unsplash.com/random/600x400/?festival,india')"></div>
+                        <div class="carousel-content">
+                            <div>
+                                <h3 class="carousel-title">महाराष्ट्रात अमृततर्फे दीपावलीमध्ये होणार विश्वविक्रमी दुर्गोत्सव</h3>
+                                <p class="carousel-text">महाराष्ट्रात अमृततर्फे दीपावलीमध्ये विश्वविक्रमी दुर्गोत्सव २०२५ चे आयोजन करण्यात आले आहे. या उत्सवात सहभागी होण्यासाठी देशभरातून हजारो भाविक येणार आहेत. व्यवस्थापकीय संचालक अमृत मा. विजय जोशी यांच्या मार्गदर्शनाखाली हा कार्यक्रम राबविण्यात येत आहे...</p>
+                                <a href="#" class="continue-reading">Continue reading...</a>
+                            </div>
+                            <div>
+                                <div class="publisher-info">
+                                    <div class="publisher-photo">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="publisher-name">Amrut Maharashtra</div>
+                                </div>
+                                <div class="publish-date">
+                                    <i class="fas fa-calendar"></i> November 25, 2025
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-controls">
+                    <button class="carousel-btn" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <div class="carousel-indicators" id="carouselIndicators">
+                    <span class="indicator active" data-index="0"></span>
+                    <span class="indicator" data-index="1"></span>
+                    <span class="indicator" data-index="2"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section">
+        <div class="container">
+            <h2 class="section-title">Latest News</h2>
+            
+            <!-- News Grid -->
+            <div class="row">
+                <!-- News Item 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="news-card">
+                        <div class="news-card-img" style="background-image: url('https://source.unsplash.com/random/600x400/?drone')"></div>
+                        <div class="news-card-body">
+                            <h4 class="news-title">'अमृत'कडून मोफत प्रशिक्षण; तरुण ड्रोन पायलटच्या व्यवसायाची चार महिन्यांत लाखमोलाची भरारी!</h4>
+                            <p class="news-content">चौसाळा (ता. जि. बीड) : काही तरी वेगळे करून दाखवण्याची असलेली जिद्द, त्यासाठी मेहनत करण्याची असलेली तयारी आणि त्याला मिळालेली योग्य प्रशिक्षणाची जोड यातून काय चमत्कार घडू शकतो, ते पाहायचे...</p>
+                            <a href="#" class="read-more">READ MORE <i class="fas fa-arrow-right ms-1"></i></a>
+                            <div class="mt-2 news-date">
+                                <small>November 26, 2025</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- News Item 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="news-card">
+                        <div class="news-card-img" style="background-image: url('https://source.unsplash.com/random/600x400/?computer,training')"></div>
+                        <div class="news-card-body">
+                            <h4 class="news-title">विहामांडवामधील पाच विद्यार्थ्यांना 'अमृत'मुळे विनामूल्य घेता आले कम्प्युटर टायपिंग प्रशिक्षण</h4>
+                            <p class="news-content">विहामांडवा (ता. पैठण, जि. छत्रपती संभाजीनगर) : खुल्या गटातील आर्थिकदृष्ट्या दुर्बल घटकांसाठी कार्यरत असलेल्या 'अमृत' या महाराष्ट्र सरकारच्या स्वायत्त संस्थेच्या योजनेमुळे छत्रपती संभाजीनगर जिल्ह्यातील पाच विद्यार्थ्यांना...</p>
+                            <a href="#" class="read-more">READ MORE <i class="fas fa-arrow-right ms-1"></i></a>
+                            <div class="mt-2 news-date">
+                                <small>November 25, 2025</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- News Item 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="news-card">
+                        <div class="news-card-img" style="background-image: url('https://source.unsplash.com/random/600x400/?meeting,community')"></div>
+                        <div class="news-card-body">
+                            <h4 class="news-title">गडहिंग्लज तालुका अमृत मेळाव्यासाठीच्या बैठकीला ब्राह्मण समाजाचा उत्तम प्रतिसाद</h4>
+                            <p class="news-content">कोल्हापूर : कोल्हापूर जिल्ह्यातील गडहिंग्लज तालुका अमृत मेळाव्यासाठी नुकतेच बैठकीचे आयोजन करण्यात आले होते. या बैठकीला ब्राह्मण समाजाने उत्तम प्रतिसाद दिला. बैठकीचे आयोजन सामाजिक कार्यकर्ते संजय कुलकर्णी यांनी केले...</p>
+                            <a href="#" class="read-more">READ MORE <i class="fas fa-arrow-right ms-1"></i></a>
+                            <div class="mt-2 news-date">
+                                <small>November 24, 2025</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- You May Have Missed Section -->
+    <section class="missed-section">
+        <div class="container">
+            <h2 class="section-title">You May Have Missed</h2>
+            
+            <div class="missed-cards-container">
+                <!-- Card 1 -->
+                <div class="missed-card">
+                    <div class="special-tag">विशेष</div>
+                    <div class="missed-card-bg" style="background-image: url('https://source.unsplash.com/random/600x400/?woman,leader')"></div>
+                    <div class="missed-card-overlay">
+                        <h3 class="missed-card-title">लक्ष्मीबाई केळकर – स्त्री शक्तीची अनोखी कहाणी</h3>
+                        <div class="missed-card-meta">
+                            <div class="publisher-info">
+                                <div class="publisher-photo">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="publisher-name">Amrut Maharashtra</div>
+                            </div>
+                            <div class="publish-date">
+                                <i class="fas fa-calendar"></i> Nov 26, 2025
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="missed-card">
+                    <div class="special-tag">विशेष</div>
+                    <div class="missed-card-bg" style="background-image: url('https://source.unsplash.com/random/600x400/?business,leader')"></div>
+                    <div class="missed-card-overlay">
+                        <h3 class="missed-card-title">जेआरडी टाटा - भारतीय उद्योगाचे अग्रदूत</h3>
+                        <div class="missed-card-meta">
+                            <div class="publisher-info">
+                                <div class="publisher-photo">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="publisher-name">Kaumudi Paranjpe</div>
+                            </div>
+                            <div class="publish-date">
+                                <i class="fas fa-calendar"></i> Nov 28, 2025
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="missed-card">
+                    <div class="special-tag">विशेष</div>
+                    <div class="missed-card-bg" style="background-image: url('https://source.unsplash.com/random/600x400/?festival,india')"></div>
+                    <div class="missed-card-overlay">
+                        <h3 class="missed-card-title">महाराष्ट्रात अमृततर्फे दीपावलीमध्ये होणार विश्वविक्रमी दुर्गोत्सव</h3>
+                        <div class="missed-card-meta">
+                            <div class="publisher-info">
+                                <div class="publisher-photo">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="publisher-name">Amrut Maharashtra</div>
+                            </div>
+                            <div class="publish-date">
+                                <i class="fas fa-calendar"></i> Nov 25, 2025
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="missed-card">
+                    <div class="special-tag">विशेष</div>
+                    <div class="missed-card-bg" style="background-image: url('https://source.unsplash.com/random/600x400/?drone,technology')"></div>
+                    <div class="missed-card-overlay">
+                        <h3 class="missed-card-title">'अमृत'कडून मोफत प्रशिक्षण; तरुण ड्रोन पायलटच्या व्यवसायाची चार महिन्यांत लाखमोलाची भरारी!</h3>
+                        <div class="missed-card-meta">
+                            <div class="publisher-info">
+                                <div class="publisher-photo">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="publisher-name">Amrut Maharashtra</div>
+                            </div>
+                            <div class="publish-date">
+                                <i class="fas fa-calendar"></i> Nov 26, 2025
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <div style="width: 150px; height: 60px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #333; font-weight: bold;">
+                    AM Logo
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <a href="#" class="footer-link">गोपनीयता धोरण</a>
+                <a href="#" class="footer-link">अटी आणि शर्ती</a>
+                <a href="#" class="footer-link">आमच्यासोबत जाहिरात करा</a>
+                <a href="#" class="footer-link">पॉडकास्ट / व्हिडिओ</a>
+                <a href="#" class="footer-link">अमृत कार्यदीप</a>
+            </div>
+            
+            <div class="footer-divider"></div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © 2023 Amrut Maharashtra. सर्वाधिकार राखीव.
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="#" class="footer-bottom-link">गोपनीयता धोरण</a>
+                    <a href="#" class="footer-bottom-link">सेवेची अटी</a>
+                    <a href="#" class="footer-bottom-link">कुकीज सेटिंग्ज</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // Dark mode toggle
+        document.getElementById('modeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const icon = this.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+
+        // Navigation active state
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Top Stories Pause/Play functionality
+        const pauseBtn = document.getElementById('pauseBtn');
+        const topStoriesTrack = document.getElementById('topStoriesTrack');
+        let isPaused = false;
+
+        pauseBtn.addEventListener('click', function() {
+            isPaused = !isPaused;
+            if (isPaused) {
+                topStoriesTrack.classList.add('paused');
+                this.innerHTML = '<i class="fas fa-play"></i>';
+            } else {
+                topStoriesTrack.classList.remove('paused');
+                this.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+        });
+
+        // Special Carousel functionality
+        const carouselContainer = document.getElementById('carouselContainer');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const indicators = document.querySelectorAll('.indicator');
+        let currentIndex = 0;
+        const totalItems = document.querySelectorAll('.carousel-item').length;
+
+        function updateCarousel() {
+            carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            // Update indicators
+            indicators.forEach((indicator, index) => {
+                if (index === currentIndex) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalItems - 1;
+            updateCarousel();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex < totalItems - 1) ? currentIndex + 1 : 0;
+            updateCarousel();
+        });
+
+        indicators.forEach(indicator => {
+            indicator.addEventListener('click', () => {
+                currentIndex = parseInt(indicator.getAttribute('data-index'));
+                updateCarousel();
+            });
+        });
+
+        // Auto-advance carousel every 5 seconds
+        setInterval(() => {
+            if (!isPaused) {
+                currentIndex = (currentIndex < totalItems - 1) ? currentIndex + 1 : 0;
+                updateCarousel();
+            }
+        }, 5000);
+    </script>
+</body>
+</html>
